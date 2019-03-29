@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Loader from './components/loader/loader';
-import Task from './components/tasks/task'
+import CreateTask from './components/create/create';
 import Hoc from './components/hoc/hoc';
-import InitialState from './components/initialState/initialState';
+import TaskWrapper from './components/task-wrapper/task-wrapper';
 import './App.css';
 
 class App extends Component {
@@ -24,13 +25,19 @@ class App extends Component {
   }
   render() {
     return (
-      <div className={(this.state.isLoading)?"App background-gradient2":"App background-gradient3"}>
-        { (this.state.isLoading)?<Loader></Loader>:
-            <Hoc>
-              <InitialState></InitialState>
-              {(this.props.tasks.length)?<Task></Task>:null}
-            </Hoc> }
-      </div>
+      <Router>
+            <div className={(this.state.isLoading)?"App background-gradient2":"App background-gradient3"}>
+                { (this.state.isLoading)?<Loader></Loader>:
+                    <Hoc>
+                      <Route exact path="/" component={TaskWrapper} />
+                      <Route exact path="/create" component={CreateTask} />
+                    </Hoc> 
+                }
+                
+            
+            
+            </div>
+      </Router>
     );
   }
 }

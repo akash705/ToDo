@@ -22,7 +22,7 @@ class Post extends Component {
                                         &times;
                                 </button>
                             </div>
-                            <div class="card-footer clearfix ">
+                            <div className="card-footer clearfix ">
                                     <span className="">
                                             Creation Date: {
                                                 new Date(data.expiryDate).getDate() +" / " + new Date(data.expiryDate).getMonth() + " / "+ new Date(data.expiryDate).getFullYear()
