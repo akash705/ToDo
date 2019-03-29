@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Loader from './components/loader/loader';
+import Task from './components/tasks/task'
+import Hoc from './components/hoc/hoc';
+import InitialState from './components/initialState/initialState';
 import './App.css';
 
 class App extends Component {
-  componentDidUpdate(){
-    console.log(this.props.tasks);
+  state={
+    isLoading:true
+  }
+  componentDidMount(){
+    // Aritifical Delay For Loading Screen.....
+    setTimeout(data=>{
+      this.setState((state)=>{
+        return {
+          isLoading:false
+        }
+      });
+    },2000);
+    
   }
   render() {
     return (
-      <div className="background-gradient1 App">
-        Hello React
+      <div className={(this.state.isLoading)?"App background-gradient2":"App background-gradient3"}>
+        { (this.state.isLoading)?<Loader></Loader>:
+            <Hoc>
+              <InitialState></InitialState>
+              {(this.props.tasks.length)?<Task></Task>:null}
+            </Hoc> }
       </div>
     );
   }
@@ -20,7 +39,6 @@ class App extends Component {
 // Redux==============
 var mapToProperty=(state)=>{
   return{
-    ...state,
     tasks:state.tasks
   }
 }
