@@ -11,3 +11,16 @@
     border: 1px solid peachpuff;
     cursor: pointer;
 }
+.smallButton > .center{
+    color:#F1F2B5!important;
+    height: 50px;
+    width: 50px;
+    position:fixed!important;
+    bottom: 50px;
+    right: 25px;
+    border-radius:50%;
+    border: 1px solid #363795;
+    cursor: pointer;
+    background:#363795;
+    will-change: transform;
+}

@@ -10,6 +10,15 @@ class InitialStateButton extends Component {
         var a=null;
         if(this.props.tasks && this.props.tasks.length){
             // creating Button on Corner
+            a=(
+                <Hoc>
+                     <div className="smallButton">
+                        <div className="center position-relative">
+                            <i className="fa fa-plus absolute-center" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </Hoc>
+            )
         }else{
             // center
             a=(

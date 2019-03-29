@@ -1,5 +1,5 @@
 var initialState={
-    tasks:[],
+    tasks:['a'],
     completedTask:[]
 }
 var reducer=(state=initialState,action)=>{
