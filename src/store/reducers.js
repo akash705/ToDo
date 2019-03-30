@@ -6,7 +6,7 @@ var initialState={
             expiryDate:(+new Date),
             creationDate:(+new Date),
             id:+new Date,
-            status:'Active'
+            status:'active'
         }
     ],
     completedTask:[]

@@ -6,7 +6,7 @@ import Loader from './components/loader/loader';
 import CreateTask from './components/create/create';
 import Hoc from './components/hoc/hoc';
 import TaskWrapper from './components/task-wrapper/task-wrapper';
-import UpdatePost from './components/updatePost';
+import UpdatePost from './components/updatePost/updatePost';
 import './App.css';
 
 class App extends Component {

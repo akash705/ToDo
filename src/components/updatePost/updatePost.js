@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 
 
 import Hoc from './../hoc/hoc';
-import './card.css';
 import actionCreators from '../../store/action-creators/action-creators';
 
 class update extends Component {
@@ -37,7 +36,7 @@ class update extends Component {
                 return 0;
             }
             this.props.dispatchE({
-                index:index,
+                id:0,
                 data:{title:this.state.title,description:this.state.description,expiryDate:this.state.expiry}
             });
     }

@@ -5,7 +5,7 @@ const Create=(data)=>{
 const Delete=(data)=>{
     return {type:actions.DELETED,data:data};
 }
-const update = (data)=>{
+const Update = (data)=>{
     return {type:actions.UPDATE,data:data};
 }
 export default {

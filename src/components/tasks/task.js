@@ -11,6 +11,16 @@ class Post extends Component {
                 return (
                     <div className="container-fluid" key={data.id}>
                         <div className="card no-radius bg-dark border-dark">
+                            <div className="card-header">
+                            { (data.status=="active") ? 
+                                        <button className="btn btn-outline-danger">
+                                                Active
+                                        </button>:(
+                                            <button className="btn btn-outline-primary">
+                                                    Completed
+                                            </button>
+                                        ) }
+                            </div>
                             <div className="card-body">
                                 <h5 className="card-title">
                                     {data.title}
@@ -19,10 +29,10 @@ class Post extends Component {
                                     {data.description}
                                 </p>
                                 <button type="button" className="closeButton btn btn-outline-dark">
-                                        &times;
+                                    <i className="fas fa-times"></i>
                                 </button>
                                 <button type="button" className="closeButton edit btn btn-outline-dark">
-                                        &#9998;
+                                    <i className="far fa-edit"></i>
                                 </button>
                             </div>
                             <div className="card-footer clearfix ">
@@ -36,13 +46,7 @@ class Post extends Component {
                                                 new Date(data.expiryDate).getDate() +" / " + new Date(data.expiryDate).getMonth() + " / "+ new Date(data.expiryDate).getFullYear()
                                             }
                                     </span>
-                                    <span>
-                                        Status { (data.status=="active") ? null:(
-                                            <button className="btn btn-outline-danger">
-                                                    Completed
-                                            </button>
-                                        ) }
-                                    </span>
+                                    
                                 {/* <span className="float-right">
                                     Expiry Date: {(new Date(data.expiryDate)).toString()}
                                 </span>
