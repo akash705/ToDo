@@ -21,6 +21,9 @@ class Post extends Component {
                                 <button type="button" className="closeButton btn btn-outline-dark">
                                         &times;
                                 </button>
+                                <button type="button" className="closeButton edit btn btn-outline-dark">
+                                        &#9998;
+                                </button>
                             </div>
                             <div className="card-footer clearfix ">
                                     <span className="">
@@ -32,6 +35,13 @@ class Post extends Component {
                                             Expiry Date: {
                                                 new Date(data.expiryDate).getDate() +" / " + new Date(data.expiryDate).getMonth() + " / "+ new Date(data.expiryDate).getFullYear()
                                             }
+                                    </span>
+                                    <span>
+                                        Status { (data.status=="active") ? null:(
+                                            <button className="btn btn-outline-danger">
+                                                    Completed
+                                            </button>
+                                        ) }
                                     </span>
                                 {/* <span className="float-right">
                                     Expiry Date: {(new Date(data.expiryDate)).toString()}

@@ -11,3 +11,6 @@
 .closeButton:hover{
     background:transparent!important;
 }
+.closeButton.edit{
+    right: 20px !important;
+}
