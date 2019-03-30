@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar';
+// import Calendar from 'react-calendar';
 import {connect} from 'react-redux';
 
 // import {withRouter} from 'react-router-dom';
@@ -66,7 +66,7 @@ class update extends Component {
                                      value={this.state.description} onChange={(ev)=>this.valueChanged("description",ev)} />
                             </div>
                             <div className="input-group mb-3">
-                                    <Calender onChange={this.valueChanged} value={this.state.expiry}></Calender>
+                                    {/* <Calender onChange={this.valueChanged} value={this.state.expiry}></Calender> */}
                             </div>
                         </div>
                         <div className="card-footer text-muted bg-dark">

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar';
+// import Calendar from 'react-calendar';
 import {connect} from 'react-redux';
 
 
@@ -53,7 +53,7 @@ class create extends Component {
                                      value={this.state.description} onChange={(ev)=>this.valueChanged("description",ev)} />
                             </div>
                             <div className="input-group mb-3">
-                                    <Calender onChange={this.valueChanged} value={this.state.expiry}></Calender>
+                                    {/* <Calender onChange={this.valueChanged} value={this.state.expiry}></Calender> */}
                             </div>
                             <div className="input-group mb-3">
                                     <select class="form-control"  value={this.state.description} onChange={(ev)=>this.valueChanged("status",ev)}>
