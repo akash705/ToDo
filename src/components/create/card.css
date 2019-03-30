@@ -5,3 +5,9 @@
     margin: auto;
     width:80%;
 }
+.calenderClass{
+    
+}
+.calenderClass >  .react-calendar__navigation{
+    margin:0 !important;
+}

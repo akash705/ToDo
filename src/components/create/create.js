@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import Calendar from 'react-calendar';
 import {connect} from 'react-redux';
-
+import Calendar from 'react-calendar';
 
 import Hoc from './../hoc/hoc';
 import './card.css';
@@ -68,6 +67,18 @@ class create extends Component {
                                     <textarea className="form-control"
                                      value={this.state.description} onChange={(ev)=>this.valueChanged("description",ev)} />
                             </div>
+                            <p className="p-0 m-0 text-dark">
+                                    <label >Expiry:</label>
+                            </p>
+                            <div className="input-group mb-3">
+                            <input type='date' class="form-control" value={this.state.expiry} onChange={(ev)=>this.valueChanged("expiry",ev)} />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                            
+
+                            
                             <p className="p-0 m-0 text-dark">
                                     <label >Status:</label>
                             </p>
