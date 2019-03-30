@@ -12,11 +12,11 @@ class create extends Component {
         title:'',
         description:'',
         status:'active',
-        expiry:+new Date
+        expiry:null
      };
     //  status must be either ACTIVE COMPLETED
      componentDidMount(){
-        console.log(this.props);
+        // console.log(this.props);
      }
     createTask=()=>{
             // checking all Data
@@ -39,7 +39,6 @@ class create extends Component {
         return data && data.trim();
     }
     valueChanged=(type,ev)=>{
-        console.log(type);
         let data={
             [type]:ev.target.value
         }
@@ -67,7 +66,7 @@ class create extends Component {
                             </p>
                             <div className="input-group mb-3">
                                     <textarea className="form-control"
-                                     value={this.state.description} value={this.state.description} onChange={(ev)=>this.valueChanged("description",ev)} />
+                                     value={this.state.description} onChange={(ev)=>this.valueChanged("description",ev)} />
                             </div>
                             <p className="p-0 m-0 text-dark">
                                     <label >Status:</label>
