@@ -10,5 +10,6 @@ const update = (data)=>{
 }
 export default {
     Create,
-    Delete
+    Delete,
+    Update
 }

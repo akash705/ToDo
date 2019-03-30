@@ -23,7 +23,7 @@ class update extends Component {
             return data.id===id;
         }):[];
         if(!filterArray || !filterArray.length ){
-            this.props.history.pop('create');
+            this.props.history.pop();
         }
     }
     createTask=()=>{
@@ -86,7 +86,7 @@ var mapsToProperty=(state)=>{
 }
 var dispatchEvent=(dispatcher)=>{
     return {
-        dispatchE:(data)=>dispatcher(actionCreators.update(data))
+        dispatchE:(data)=>dispatcher(actionCreators.Update(data))
     }
 };
 export default connect(mapsToProperty,dispatchEvent)(update);
