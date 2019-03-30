@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import actionCreators from '../../store/action-creators/action-creators';
 import './task.css';
 
 class Post extends Component {
@@ -8,9 +9,12 @@ class Post extends Component {
     componentDidMount(){
         console.log(this.props.tasks);
     }
+    deletePost=(index)=>{
+        this.props.dispatchEvent({index:index});
+    }
     render() { 
         return ( 
-            this.props.tasks.map(data=>{
+            this.props.tasks.map((data,index)=>{
                 return (
                     <div className="container-fluid" key={data.id}>
                         <div className="card no-radius bg-dark border-dark">
@@ -31,7 +35,8 @@ class Post extends Component {
                                 <p className="card-text">
                                     {data.description}
                                 </p>
-                                <button type="button" className="closeButton btn btn-outline-dark">
+                                <button type="button" className="closeButton btn btn-outline-dark" 
+                                    onClick={()=>this.deletePost(index)}>
                                     <i className="fas fa-times"></i>
                                 </button>
                                 <button type="button" className="closeButton edit btn btn-outline-dark">
@@ -68,4 +73,9 @@ var mapToProperty=(state)=>{
         tasks:state.tasks
     }
 }
-export default connect(mapToProperty,null)(Post);
+var dispatch=(dispatched)=>{
+    return {
+        dispatchEvent:(data)=>dispatched(actionCreators.Delete(data))
+    }
+}
+export default connect(mapToProperty,dispatch)(Post);
