@@ -9,7 +9,6 @@ import './initialState.css';
 class InitialStateButton extends Component {
     state = {  }
     componentDidMount(){
-        console.log(this.props);
     }
     createPage=()=>{
             this.props.history.push('create');

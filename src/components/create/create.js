@@ -12,10 +12,12 @@ class create extends Component {
         title:'',
         description:'',
         status:'active',
-        expiry:new Date()
+        expiry:+new Date
      };
     //  status must be either ACTIVE COMPLETED
-
+     componentDidMount(){
+        console.log(this.props);
+     }
     createTask=()=>{
             // checking all Data
             if(!this.checkForValue(this.state.title)){
@@ -26,12 +28,18 @@ class create extends Component {
                 alert('Description is Required');
                 return 0;
             }
-            this.props.dispatchE({title:this.state.title,description:this.state.description,expiryDate:this.state.expiry});
+            console.log(this.state.status,'');
+            this.props.dispatchE({
+                title:this.state.title,description:this.state.description,expiryDate:this.state.expiry
+                ,status:this.state.status
+            });
+            this.props.history.goBack();
     }
     checkForValue=(data)=>{
         return data && data.trim();
     }
     valueChanged=(type,ev)=>{
+        console.log(type);
         let data={
             [type]:ev.target.value
         }
@@ -40,6 +48,7 @@ class create extends Component {
              ...data
             }
           });
+          
         
     }
     render() { 

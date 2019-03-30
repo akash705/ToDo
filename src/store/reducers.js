@@ -1,3 +1,4 @@
+import actions from './actions';
 var initialState={
     tasks:[
         {
@@ -12,35 +13,36 @@ var initialState={
     completedTask:[]
 }
 var reducer=(state=initialState,action)=>{
-    switch(action.type){
-        case("CREATED"):{
+
+        if(actions.CREATED==action.type){
+            // console.log('inside create');
             let originalPost=[...state.tasks];
-            originalPost.id=+new Date;
+            action.data.id=+new Date;
+            action.data.creationDate=+new Date;
             originalPost.push(action.data);
+            console.log(originalPost);
             return {
                 ...state,
-                originalPost
+                tasks:originalPost
             }
         };
-        case("DELETED"):{
+        if(actions.DELETED===action.type){
             let originalPost=[...state.tasks];
             originalPost.splice(action.data.index,1);
             return {
                 ...state,
-                originalPost
+               tasks: originalPost
             }
         }
-        case("UPDATED"):{
+        if(actions.UPDATE===action.type){
             let originalPost=[...state.tasks];
             originalPost[action.data.index]=action.data.data;
             return {
                 ...state,
-                originalPost
+                tasks:originalPost
             }
         }
-        default:{
-            return state;
-        }
-    }
+        return state;
 }
+
 export default reducer;

@@ -5,6 +5,9 @@ import './task.css';
 
 class Post extends Component {
     state = {  }
+    componentDidMount(){
+        console.log(this.props.tasks);
+    }
     render() { 
         return ( 
             this.props.tasks.map(data=>{
