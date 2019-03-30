@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Loader from './components/loader/loader';
 import CreateTask from './components/create/create';
@@ -21,7 +21,7 @@ class App extends Component {
           isLoading:false
         }
       });
-    },2000);
+    },Math.random()*1000);
     
   }
   render() {

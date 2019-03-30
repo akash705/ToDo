@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import Calendar from 'react-calendar';
 
 import Hoc from './../hoc/hoc';
 import actionCreators from '../../store/action-creators/action-creators';
@@ -13,7 +12,7 @@ class UpdatePost extends Component {
         expiry:new Date().toISOString().substr(0, 10)
      };
     //  status must be either ACTIVE COMPLETED
-     componentDidMount(){
+    componentDidMount(){
         let filter = this.props.tasks[this.props.match.params.id];
         if(!filter){
             return this.props.history.goBack();
@@ -28,14 +27,16 @@ class UpdatePost extends Component {
                 expiry:new Date(filter.expiryDate).toISOString().substr(0, 10)
             }
         })
-     }
-     GetFormattedDate=(date)=> {
+    }
+    
+    GetFormattedDate=(date)=> {
         var todayTime = new Date(date);
         var Month = todayTime .getMonth() + 1;
         var Day = todayTime .getDate();
         var Year =todayTime .getFullYear();
         return Year + "-" + Month + "-" + Day;
     }
+    
     updateTask=()=>{
             // checking all Data
             if(!this.checkForValue(this.state.title)){
@@ -56,9 +57,11 @@ class UpdatePost extends Component {
             });
             this.props.history.goBack();
     }
+    
     checkForValue=(data)=>{
         return data && data.trim();
     }
+    
     valueChanged=(type,ev)=>{
         let data={
             [type]:ev.target.value
@@ -69,6 +72,7 @@ class UpdatePost extends Component {
             }
           });    
     }
+    
     render() { 
         return ( 
             <Hoc>

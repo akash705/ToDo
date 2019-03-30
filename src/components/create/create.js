@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import Calendar from 'react-calendar';
-
 import Hoc from './../hoc/hoc';
 import './card.css';
 import actionCreators from '../../store/action-creators/action-creators';
@@ -13,16 +11,17 @@ class create extends Component {
         status:'active',
         expiry:new Date().toISOString().substr(0, 10)
      };
-    //  status must be either ACTIVE COMPLETED
-     componentDidMount(){
-     }
-     GetFormattedDate=(date)=> {
+    componentDidMount(){
+    }
+    
+    GetFormattedDate=(date)=> {
         var todayTime = new Date(date);
         var Month = todayTime .getMonth() + 1;
         var Day = todayTime .getDate();
         var Year =todayTime .getFullYear();
         return Year + "-" + Month + "/" + Day;
     }
+
     createTask=()=>{
             // checking all Data
             if(!this.checkForValue(this.state.title)){
@@ -40,9 +39,11 @@ class create extends Component {
             });
             this.props.history.goBack();
     }
+
     checkForValue=(data)=>{
         return data && data.trim();
     }
+    
     valueChanged=(type,ev)=>{
         let data={
             [type]:ev.target.value
@@ -51,9 +52,7 @@ class create extends Component {
             return {
              ...data
             }
-          });
-          
-        
+          });    
     }
     render() { 
         return ( 

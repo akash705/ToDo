@@ -7,19 +7,11 @@ import './task.css';
 
 class Post extends Component {
     state = {  }
-    componentDidMount(){
-        console.log(this.props.tasks);
-    }
     deletePost=(index)=>{
         this.props.dispatchEvent({index:index});
     }
     edit=(index)=>{
-        this.props.history.push('updatePost/'+index,{
-            params:{
-                id:'akash'
-            }
-        });
-        // console.log()
+        this.props.history.push('updatePost/'+index);
     }
     render() { 
         return ( 
@@ -28,7 +20,7 @@ class Post extends Component {
                     <div className="container-fluid" key={data.id}>
                         <div className="card no-radius bg-dark border-dark">
                             <div className="card-header">
-                            { (data.status=="active") ? 
+                            { (data.status==="active") ? 
                                         <button className="btn btn-outline-danger">
                                                 Active
                                         </button>:(
