@@ -6,6 +6,7 @@ import Loader from './components/loader/loader';
 import CreateTask from './components/create/create';
 import Hoc from './components/hoc/hoc';
 import TaskWrapper from './components/task-wrapper/task-wrapper';
+import UpdatePost from './components/updatePost';
 import './App.css';
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
                     <Hoc>
                       <Route exact path="/" component={TaskWrapper} />
                       <Route exact path="/create" component={CreateTask} />
+                      <Route exact path="/updatePost/:id" component={UpdatePost} />
                     </Hoc> 
                 }
                 

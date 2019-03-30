@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import {connect} from 'react-redux';
 
+// import {withRouter} from 'react-router-dom';
+
 
 import Hoc from './../hoc/hoc';
 import './card.css';
 import actionCreators from '../../store/action-creators/action-creators';
 
-class create extends Component {
+class update extends Component {
     state = { 
         title:'',
         description:'',
@@ -15,7 +17,15 @@ class create extends Component {
         expiry:new Date()
      };
     //  status must be either ACTIVE COMPLETED
-
+    componentDidMount(){
+        const { id } = this.props.match.params.id;
+        let filterArray =( this.props.tasks)? this.props.tasks.filter(data=>{
+            return data.id===id;
+        }):[];
+        if(!filterArray || !filterArray.length ){
+            this.props.history.pop('create');
+        }
+    }
     createTask=()=>{
             // checking all Data
             if(!this.checkForValue(this.state.title)){
@@ -26,7 +36,10 @@ class create extends Component {
                 alert('TItle is Required');
                 return 0;
             }
-            this.props.dispatchE({title:this.state.title,description:this.state.description,expiryDate:this.state.expiry});
+            this.props.dispatchE({
+                index:index,
+                data:{title:this.state.title,description:this.state.description,expiryDate:this.state.expiry}
+            });
     }
     checkForValue=(data)=>{
         return data && data.trim();
@@ -55,16 +68,10 @@ class create extends Component {
                             <div className="input-group mb-3">
                                     <Calender onChange={this.valueChanged} value={this.state.expiry}></Calender>
                             </div>
-                            <div className="input-group mb-3">
-                                    <select class="form-control"  value={this.state.description} onChange={(ev)=>this.valueChanged("status",ev)}>
-                                        <option value="1">Active</option>
-                                        <option value="2">Completed</option>
-                                    </select>
-                            </div>
                         </div>
                         <div className="card-footer text-muted bg-dark">
                             <button className="btn btn-outline-danger" onClick={this.createTask}>
-                                Create
+                                Update
                             </button>
                         </div>
                     </div>
@@ -72,9 +79,14 @@ class create extends Component {
          );
     }
 }
+var mapsToProperty=(state)=>{
+    return{
+        tasks:state.tasks
+    }
+}
 var dispatchEvent=(dispatcher)=>{
     return {
-        dispatchE:(data)=>dispatcher(actionCreators.Create(data))
+        dispatchE:(data)=>dispatcher(actionCreators.update(data))
     }
 };
-export default connect(null,dispatchEvent)(create);
+export default connect(mapsToProperty,dispatchEvent)(update);

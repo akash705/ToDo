@@ -1,0 +1,6 @@
+.card.create-card{
+    display: flex;
+    align-self: center;
+    justify-self: cener;
+    margin: auto;
+}
