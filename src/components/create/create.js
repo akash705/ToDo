@@ -15,7 +15,6 @@ class create extends Component {
      };
     //  status must be either ACTIVE COMPLETED
      componentDidMount(){
-        // console.log(this.props);
      }
      GetFormattedDate=(date)=> {
         var todayTime = new Date(date);
@@ -34,7 +33,6 @@ class create extends Component {
                 alert('Description is Required');
                 return 0;
             }
-            console.log(this.state.status,'');
             let format=this.GetFormattedDate(this.state.expiry);
             this.props.dispatchE({
                 title:this.state.title,description:this.state.description,expiryDate:format
@@ -49,7 +47,6 @@ class create extends Component {
         let data={
             [type]:ev.target.value
         }
-        console.log(ev.target.value);
         this.setState((state)=>{
             return {
              ...data
