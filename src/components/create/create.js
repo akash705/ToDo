@@ -11,7 +11,7 @@ class create extends Component {
         title:'',
         description:'',
         status:'active',
-        expiry:new Date()
+        expiry:new Date().toISOString().substr(0, 10)
      };
     //  status must be either ACTIVE COMPLETED
      componentDidMount(){

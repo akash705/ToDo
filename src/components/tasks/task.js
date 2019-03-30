@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import actionCreators from '../../store/action-creators/action-creators';
 import './task.css';
@@ -11,6 +12,14 @@ class Post extends Component {
     }
     deletePost=(index)=>{
         this.props.dispatchEvent({index:index});
+    }
+    edit=(index)=>{
+        this.props.history.push('updatePost/'+index,{
+            params:{
+                id:'akash'
+            }
+        });
+        // console.log()
     }
     render() { 
         return ( 
@@ -39,7 +48,8 @@ class Post extends Component {
                                     onClick={()=>this.deletePost(index)}>
                                     <i className="fas fa-times"></i>
                                 </button>
-                                <button type="button" className="closeButton edit btn btn-outline-dark">
+                                <button type="button" className="closeButton edit btn btn-outline-dark"
+                                 onClick={(ev)=>{this.edit(index,ev)}}>
                                     <i className="far fa-edit"></i>
                                 </button>
                             </div>
@@ -73,4 +83,4 @@ var dispatch=(dispatched)=>{
         dispatchEvent:(data)=>dispatched(actionCreators.Delete(data))
     }
 }
-export default connect(mapToProperty,dispatch)(Post);
+export default connect(mapToProperty,dispatch)(withRouter(Post));
