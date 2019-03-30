@@ -11,12 +11,19 @@ class create extends Component {
         title:'',
         description:'',
         status:'active',
-        expiry:null
+        expiry:new Date()
      };
     //  status must be either ACTIVE COMPLETED
      componentDidMount(){
         // console.log(this.props);
      }
+     GetFormattedDate=(date)=> {
+        var todayTime = new Date(date);
+        var Month = todayTime .getMonth() + 1;
+        var Day = todayTime .getDate();
+        var Year =todayTime .getFullYear();
+        return Year + "-" + Month + "/" + Day;
+    }
     createTask=()=>{
             // checking all Data
             if(!this.checkForValue(this.state.title)){
@@ -28,8 +35,9 @@ class create extends Component {
                 return 0;
             }
             console.log(this.state.status,'');
+            let format=this.GetFormattedDate(this.state.expiry);
             this.props.dispatchE({
-                title:this.state.title,description:this.state.description,expiryDate:this.state.expiry
+                title:this.state.title,description:this.state.description,expiryDate:format
                 ,status:this.state.status
             });
             this.props.history.goBack();
@@ -41,6 +49,7 @@ class create extends Component {
         let data={
             [type]:ev.target.value
         }
+        console.log(ev.target.value);
         this.setState((state)=>{
             return {
              ...data
@@ -71,9 +80,9 @@ class create extends Component {
                                     <label >Expiry:</label>
                             </p>
                             <div className="input-group mb-3">
-                            <input type='date' class="form-control" value={this.state.expiry} onChange={(ev)=>this.valueChanged("expiry",ev)} />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
+                            <input type='date' className="form-control" value={this.state.expiry} onChange={(ev)=>this.valueChanged("expiry",ev)} />
+                                <span className="input-group-addon">
+                                    <span className="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                             

@@ -46,7 +46,7 @@ class Post extends Component {
                             <div className="card-footer clearfix ">
                                     <span className="">
                                             Creation Date: {
-                                                new Date(data.expiryDate).getDate() +" / " + new Date(data.expiryDate).getMonth() + " / "+ new Date(data.expiryDate).getFullYear()
+                                                new Date(data.creationDate).getDate() +" / " + new Date(data.creationDate).getMonth() + " / "+ new Date(data.creationDate).getFullYear()
                                             }
                                     </span>
                                     <span className="float-right">
@@ -54,11 +54,6 @@ class Post extends Component {
                                                 new Date(data.expiryDate).getDate() +" / " + new Date(data.expiryDate).getMonth() + " / "+ new Date(data.expiryDate).getFullYear()
                                             }
                                     </span>
-                                    
-                                {/* <span className="float-right">
-                                    Expiry Date: {(new Date(data.expiryDate)).toString()}
-                                </span>
-                                 */}
                             </div>
                         </div>
                     </div>
