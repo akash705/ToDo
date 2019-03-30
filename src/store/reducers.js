@@ -36,7 +36,10 @@ var reducer=(state=initialState,action)=>{
         }
         if(actions.UPDATE===action.type){
             let originalPost=[...state.tasks];
+            let originPost=originalPost[action.data.index];
             originalPost[action.data.index]=action.data.data;
+            originalPost[action.data.index].creationDate=originPost.creationDate;
+            originalPost[action.data.index].id=originPost.id;
             return {
                 ...state,
                 tasks:originalPost

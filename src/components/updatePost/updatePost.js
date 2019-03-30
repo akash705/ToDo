@@ -48,8 +48,11 @@ class UpdatePost extends Component {
             }
             let format=this.GetFormattedDate(this.state.expiry);
             this.props.dispatchE({
+              index:this.props.match.params.id,
+              data:{
                 title:this.state.title,description:this.state.description,expiryDate:format
                 ,status:this.state.status
+              }
             });
             this.props.history.goBack();
     }
